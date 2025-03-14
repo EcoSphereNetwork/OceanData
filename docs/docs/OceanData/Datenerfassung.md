@@ -1,3 +1,69 @@
+Basierend auf den Informationen aus den Suchergebnissen und allgemeinem Wissen über App-Datenerfassung, hier eine detaillierte Liste der Daten, die in verschiedenen App-Typen erfasst werden können:
+
+## Browser
+- Besuchte Websites und Zeitstempel
+- Suchverlauf
+- Download-Historie
+- Lesezeichen
+- Browsing-Dauer pro Website
+- Gerätetyp und Betriebssystem
+- IP-Adresse und geografischer Standort
+- Verwendete Browser-Erweiterungen
+
+## Kalender
+- Termine und Ereignisse mit Datum, Uhrzeit und Dauer
+- Teilnehmer an Ereignissen
+- Wiederholende Termine
+- Erinnerungen und Benachrichtigungen
+- Standorte von Ereignissen
+- Kategorien oder Tags für Termine
+- Synchronisationsstatus mit anderen Geräten
+- Änderungshistorie von Terminen
+
+## Chat
+- Gesendete und empfangene Nachrichten mit Zeitstempel
+- Medienanhänge (Bilder, Videos, Audiodateien)
+- Kontaktliste und Gruppenmitgliedschaften
+- Online-Status und letzte Aktivität
+- Gelesen-Status von Nachrichten
+- Reaktionen auf Nachrichten (z.B. Emojis)
+- Sprachanrufe und Videoanrufe (Dauer, Teilnehmer)
+- Geteilte Links
+
+## Social Media
+- Profilinformationen (Name, Alter, Geschlecht, Interessen)
+- Freundesliste und Verbindungen
+- Gepostete Inhalte (Text, Bilder, Videos)
+- Likes, Kommentare und Shares
+- Besuchte Profile und Seiten
+- Verweildauer auf der Plattform
+- Interaktionen mit Werbeanzeigen
+- Standortdaten bei Check-ins
+
+## Streaming
+- Angesehene Inhalte und Dauer
+- Suchverlauf innerhalb der App
+- Bewertungen und Rezensionen
+- Wiedergabequalität und Pufferungsereignisse
+- Gerätetyp für Streaming
+- Abonnementstatus und Zahlungshistorie
+- Erstellte Playlists und Watchlists
+- Empfehlungen basierend auf Sehgewohnheiten
+
+## Übergreifende Daten
+- Nutzungshäufigkeit und -dauer der App
+- Geräteinformationen (Modell, Betriebssystem)
+- Spracheinstellungen
+- Benachrichtigungseinstellungen
+- In-App-Käufe
+- Crash-Berichte und Fehlermeldungen
+- Batterienutzung
+- Netzwerkverbindungstyp (WLAN, mobiles Netz)
+
+Diese Liste bietet einen umfassenden Überblick über die Arten von Daten, die in verschiedenen App-Kategorien erfasst werden können. Es ist wichtig zu beachten, dass die tatsächliche Datenerfassung je nach App, Datenschutzeinstellungen und geltenden Gesetzen variieren kann[1][5][7].
+
+
+
 Hier ist eine erweiterte Liste der Daten, die in den neu genannten App- und Gerätetypen erfasst werden können, basierend auf den bereitgestellten Informationen:
 
 ---
