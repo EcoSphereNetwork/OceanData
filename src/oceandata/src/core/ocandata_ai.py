@@ -1,3 +1,352 @@
+"""
+OceanData - Hauptklasse OceanDataAI
+
+Diese Klasse bildet das Herzstück der OceanData-Plattform und integriert
+alle Komponenten zu einer kohärenten Anwendung für die Datenmonetarisierung.
+"""
+
+import pandas as pd
+import logging
+import json
+import os
+import uuid
+from datetime import datetime
+from typing import Dict, List, Optional, Union, Any, Tuple
+
+# Import der einzelnen Komponenten
+from oceandata.data_integration.base import DataSource, DataCategory, PrivacyLevel
+from oceandata.analytics.models.anomaly_detector import AnomalyDetector
+from oceandata.privacy.compute_to_data import ComputeToDataManager
+from oceandata.blockchain.ocean_integration import OceanIntegration
+
+# Logging konfigurieren
+logger = logging.getLogger("OceanData.Core")
+
+class OceanDataAI:
+    """
+    Hauptklasse der OceanData-Plattform.
+    
+    Diese Klasse orchestriert alle Komponenten der Plattform:
+    - Datenerfassung und -integration
+    - KI-gestützte Analyse
+    - Datenschutz und Compute-to-Data
+    - Monetarisierung über Ocean Protocol
+    """
+    
+    def __init__(self, config: Dict = None):
+        """
+        Initialisiert die OceanDataAI-Plattform.
+        
+        Args:
+            config: Konfigurationsdaten für die Plattform
+        """
+        self.config = config or {}
+        
+        # Initialisiere Komponenten
+        self.anomaly_detector = AnomalyDetector(
+            method=self.config.get('anomaly_detection_method', 'isolation_forest'),
+            contamination=self.config.get('anomaly_contamination', 0.05)
+        )
+        
+        # In einer vollständigen Implementierung würden wir weitere Komponenten initialisieren:
+        # self.semantic_analyzer = SemanticAnalyzer()
+        # self.predictive_modeler = PredictiveModeler()
+        # self.data_synthesizer = DataSynthesizer()
+        
+        # Datenschutz und C2D
+        self.c2d_manager = ComputeToDataManager(
+            privacy_config=self.config.get('privacy_config')
+        )
+        
+        # Ocean Protocol Integration
+        self.ocean = OceanIntegration(
+            config=self.config.get('ocean_config')
+        )
+        
+        logger.info("OceanDataAI-Plattform initialisiert")
+    
+    def analyze_data_source(self, data: pd.DataFrame, source_type: str) -> Dict:
+        """
+        Führt eine umfassende Analyse einer Datenquelle durch.
+        
+        Args:
+            data: DataFrame mit den zu analysierenden Daten
+            source_type: Art der Datenquelle (z.B. 'browser', 'smartwatch')
+            
+        Returns:
+            Dict: Analyseergebnisse
+        """
+        try:
+            if data is None or data.empty:
+                logger.warning(f"Leere Daten für die Analyse von {source_type}")
+                return {
+                    'source_type': source_type,
+                    'timestamp': datetime.now().isoformat(),
+                    'status': 'error',
+                    'error': 'Leere Daten'
+                }
+            
+            logger.info(f"Analyse von {source_type}-Daten mit {len(data)} Datensätzen gestartet")
+            
+            # Grundlegende Datenstatistiken
+            stats = {
+                'record_count': len(data),
+                'column_count': len(data.columns),
+                'columns': list(data.columns),
+            }
+            
+            # Anomalieerkennung
+            numeric_data = data.select_dtypes(include=['number'])
+            if not numeric_data.empty:
+                self.anomaly_detector.fit(numeric_data)
+                anomaly_predictions = self.anomaly_detector.predict(numeric_data)
+                anomaly_scores = self.anomaly_detector.get_anomaly_scores(numeric_data)
+                
+                # Erkenntnisse über Anomalien
+                anomaly_insights = self.anomaly_detector.get_anomaly_insights(numeric_data, anomaly_predictions)
+                
+                # Anomaliestatistiken
+                anomaly_count = sum(1 for pred in anomaly_predictions if pred == -1)
+                anomaly_percentage = (anomaly_count / len(data)) * 100
+                
+                anomaly_analysis = {
+                    'count': anomaly_count,
+                    'percentage': anomaly_percentage,
+                    'insights': anomaly_insights[:5]  # Limitiere auf Top-5-Erkenntnisse
+                }
+            else:
+                anomaly_analysis = {
+                    'count': 0,
+                    'percentage': 0,
+                    'insights': []
+                }
+            
+            # In einer vollständigen Implementierung würden wir weitere Analysen durchführen:
+            # - Semantic Analysis für Text
+            # - Zeitreihenanalyse für zeitbasierte Daten
+            # - Predictive Modeling
+            
+            # Zeitbasierte Analyse, falls Zeitstempel vorhanden sind
+            time_series_analysis = {}
+            if 'timestamp' in data.columns or any(col.lower().endswith('time') or col.lower().endswith('date') for col in data.columns):
+                # Identifiziere die Zeitstempelspalte
+                time_col = 'timestamp'
+                if 'timestamp' not in data.columns:
+                    for col in data.columns:
+                        if col.lower().endswith('time') or col.lower().endswith('date'):
+                            time_col = col
+                            break
+                
+                # Einfache Zeitreihenanalyse
+                if time_col in data.columns:
+                    data[time_col] = pd.to_datetime(data[time_col], errors='coerce')
+                    valid_times = data.dropna(subset=[time_col])
+                    
+                    if not valid_times.empty:
+                        # Zeiträume
+                        time_range = {
+                            'start': valid_times[time_col].min().isoformat(),
+                            'end': valid_times[time_col].max().isoformat(),
+                            'duration_hours': (valid_times[time_col].max() - valid_times[time_col].min()).total_seconds() / 3600
+                        }
+                        
+                        time_series_analysis = {
+                            'time_column': time_col,
+                            'time_range': time_range,
+                            'granularity': self._detect_time_granularity(valid_times[time_col]),
+                            'is_periodic': self._check_periodicity(valid_times[time_col]),
+                            'forecast_horizon': 7  # Standard-Vorhersagehorizont
+                        }
+            
+            # Spezifische Analysen je nach Datenquellentyp
+            source_specific_analysis = {}
+            
+            if source_type == 'browser':
+                # Browser-spezifische Analyse
+                source_specific_analysis = self._analyze_browser_data(data)
+            elif source_type == 'smartwatch' or source_type == 'health_data':
+                # Gesundheitsdaten-spezifische Analyse
+                source_specific_analysis = self._analyze_health_data(data)
+            elif source_type == 'social_media':
+                # Social-Media-spezifische Analyse
+                source_specific_analysis = self._analyze_social_media_data(data)
+            
+            # Kombiniere alle Analyseergebnisse
+            result = {
+                'source_type': source_type,
+                'timestamp': datetime.now().isoformat(),
+                'status': 'success',
+                'statistics': stats,
+                'analyses': {
+                    'anomalies': anomaly_analysis,
+                    'time_series': time_series_analysis,
+                    'source_specific': source_specific_analysis
+                }
+            }
+            
+            logger.info(f"Analyse von {source_type}-Daten abgeschlossen")
+            
+            return result
+            
+        except Exception as e:
+            logger.error(f"Fehler bei der Datenanalyse: {str(e)}")
+            return {
+                'source_type': source_type,
+                'timestamp': datetime.now().isoformat(),
+                'status': 'error',
+                'error': str(e)
+            }
+    
+    def prepare_data_for_monetization(self, data: pd.DataFrame, source_type: str, 
+                                    privacy_level: str = 'medium') -> Dict:
+        """
+        Bereitet Daten für die Monetarisierung vor.
+        
+        Args:
+            data: DataFrame mit den zu monetarisierenden Daten
+            source_type: Art der Datenquelle
+            privacy_level: Datenschutzniveau ('low', 'medium', 'high')
+            
+        Returns:
+            Dict: Vorbereitete Daten für die Monetarisierung
+        """
+        try:
+            if data is None or data.empty:
+                logger.warning(f"Leere Daten für die Monetarisierung von {source_type}")
+                return {
+                    'status': 'error',
+                    'error': 'Leere Daten'
+                }
+            
+            logger.info(f"Vorbereitung von {source_type}-Daten für Monetarisierung mit Privacy-Level {privacy_level}")
+            
+            # Konvertiere Datenschutzniveau in PrivacyLevel-Enum
+            privacy_mapping = {
+                'low': PrivacyLevel.PUBLIC,
+                'medium': PrivacyLevel.ANONYMIZED,
+                'high': PrivacyLevel.ENCRYPTED
+            }
+            privacy_enum = privacy_mapping.get(privacy_level.lower(), PrivacyLevel.ANONYMIZED)
+            
+            # Bestimme zu schützende Felder basierend auf Datenquellentyp und Datenschutzniveau
+            protected_fields = self._get_protected_fields(data, source_type, privacy_enum)
+            
+            # Wende Datenschutzmaßnahmen an
+            anonymized_data = data.copy()
+            
+            for field, level in protected_fields.items():
+                if field in anonymized_data.columns:
+                    if level == PrivacyLevel.ANONYMIZED:
+                        # Anonymisiere das Feld
+                        anonymized_data = self._anonymize_field(anonymized_data, field)
+                    elif level == PrivacyLevel.ENCRYPTED:
+                        # Verschlüssele oder entferne das Feld
+                        anonymized_data = anonymized_data.drop(field, axis=1)
+                    elif level == PrivacyLevel.SENSITIVE:
+                        # Entferne sensitive Daten
+                        anonymized_data = anonymized_data.drop(field, axis=1)
+            
+            # Erstelle C2D-Asset für geschützte Daten
+            c2d_asset = self.c2d_manager.create_data_asset(data, {
+                'source_type': source_type,
+                'privacy_level': privacy_level,
+                'original_columns': list(data.columns),
+                'preserved_columns': list(anonymized_data.columns)
+            })
+            
+            # Schätze den Wert der Daten basierend auf Typus und Umfang
+            analysis_result = self.analyze_data_source(data, source_type)
+            value_estimation = self.estimate_data_value(data, {
+                'source_type': source_type,
+                'analysis_result': analysis_result
+            })
+            
+            # Berücksichtige Datenschutzniveau bei der Wertschätzung
+            privacy_factor = {
+                'low': 1.2,     # Höherer Wert bei geringem Datenschutz
+                'medium': 1.0,  # Standardwert
+                'high': 0.8     # Geringerer Wert bei hohem Datenschutz (weniger nutzbare Daten)
+            }.get(privacy_level, 1.0)
+            
+            adjusted_value = value_estimation['estimated_token_value'] * privacy_factor
+            
+            # Erstelle Metadaten für die Monetarisierung
+            metadata = {
+                'source_type': source_type,
+                'privacy_level': privacy_level,
+                'record_count': len(data),
+                'field_count': len(anonymized_data.columns),
+                'original_field_count': len(data.columns),
+                'estimated_value': adjusted_value,
+                'adjusted_privacy_factor': privacy_factor,
+                'created_at': datetime.now().isoformat()
+            }
+            
+            logger.info(f"Daten für Monetarisierung vorbereitet: {len(anonymized_data)} Datensätze, geschätzter Wert: {adjusted_value}")
+            
+            return {
+                'anonymized_data': anonymized_data,
+                'metadata': metadata,
+                'c2d_asset': c2d_asset,
+                'value_estimation': value_estimation
+            }
+            
+        except Exception as e:
+            logger.error(f"Fehler bei der Datenvorbereitung für Monetarisierung: {str(e)}")
+            return {
+                'status': 'error',
+                'error': str(e)
+            }
+    
+    def combine_data_sources(self, sources: List[Dict], combination_type: str = 'merge') -> Dict:
+        """
+        Kombiniert mehrere Datenquellen zu einem wertvolleren Asset.
+        
+        Args:
+            sources: Liste der zu kombinierenden Datenquellen
+            combination_type: Art der Kombination ('merge', 'enrich', 'correlate')
+            
+        Returns:
+            Dict: Kombiniertes Daten-Asset
+        """
+        try:
+            if not sources:
+                logger.warning("Keine Datenquellen zum Kombinieren angegeben")
+                return {
+                    'status': 'error',
+                    'error': 'Keine Datenquellen angegeben'
+                }
+            
+            logger.info(f"Kombination von {len(sources)} Datenquellen mit Methode '{combination_type}'")
+            
+            # Extrahiere Daten und Metadaten
+            data_frames = []
+            metadata_list = []
+            
+            for source in sources:
+                if 'anonymized_data' in source and source['anonymized_data'] is not None:
+                    data_frames.append(source['anonymized_data'])
+                if 'metadata' in source:
+                    metadata_list.append(source['metadata'])
+            
+            if not data_frames:
+                logger.warning("Keine gültigen Daten in den Datenquellen")
+                return {
+                    'status': 'error',
+                    'error': 'Keine gültigen Daten in den Datenquellen'
+                }
+            
+            # Kombiniere die Daten je nach Kombinationstyp
+            if combination_type == 'merge':
+                # Einfaches vertikales Anfügen (mehr Datensätze)
+                combined_data = pd.concat(data_frames, ignore_index=True)
+                
+            elif combination_type == 'enrich':
+                # Horizontale Anreicherung (mehr Features)
+                # Nur die ersten beiden Quellen werden angereichert
+                combined_data = data_frames[0].copy()
+                
+                if len(data_frames) > 1:
 
 # Horizontale Anreicherung (mehr Features)
                 # Nur die ersten beiden Quellen werden angereichert
