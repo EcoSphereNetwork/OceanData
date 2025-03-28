@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     %% Datenerfassungsmodule
     class DataSource {
@@ -145,3 +146,4 @@ classDiagram
     OceanDataAI *-- ComputeToDataManager
     
     OceanDataAI ..> DataSource : uses
+```
