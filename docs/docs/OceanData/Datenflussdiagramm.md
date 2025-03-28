@@ -57,10 +57,10 @@ flowchart TD
     classDef data fill:#f9f,stroke:#333,stroke-width:1px
     classDef process fill:#bbf,stroke:#333,stroke-width:1px
     classDef result fill:#bfb,stroke:#333,stroke-width:1px
-    classDef subgraph fill:#ececff,stroke:#9370db,stroke-width:1px
+    classDef subgraphStyle fill:#ececff,stroke:#9370db,stroke-width:1px
     
     class RawData,ProcessedData,DataInsights,C2DData,DataToken data
     class DataConnectors,AIAnalysis,PrivacyLayer,ValueEstimation,OceanIntegration process
     class Marketplace result
-    class DataTypes,AnalysisResults,PrivacyMechanisms,ValueFactors subgraph
+    class DataTypes,AnalysisResults,PrivacyMechanisms,ValueFactors subgraphStyle
 ```
