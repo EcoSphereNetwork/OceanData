@@ -1,0 +1,5 @@
+Ein harmonisches Ökosystem-Illustration des EcoSphere Network im Digital-Naturalist-Stil. Im Zentrum steht ein Mensch als Metapher für das Smolitux-System: mit leuchtendem Gehirn (Smolit-Assistant), starker Wirbelsäule (SmolituxOS), pulsierendem Herz (OceanData), kommunizierenden Lippen (ResonanceLink) und aufmerksamen Augen (SmoliSearch). 
+
+Das Umfeld zeigt einen gesunden technologischen Wald mit EcoTechFarms als Bäume, die Sonnenlicht in Energie umwandeln. Kleine Server mit Solarpanels und Windrädern fügen sich natürlich in die Landschaft ein. Ein klarer Fluss (ESN_Token) durchzieht das Bild und symbolisiert Werttransfer. Bienenkolonien (Community) bestäuben Blumen (Projekte), während die Erde darunter die Prinzipien Fairness und Transparenz symbolisiert.
+
+Wurzeln verbinden alle Elemente in einem dezentralen Netzwerk. Eine saubere Atmosphäre (digitale Souveränität) umgibt alles. Sanfte Farbübergänge in Blau, Grün und Erdtönen. Der Stil sollte technisch präzis sein, aber organisch und warm wirken, um die Harmonie zwischen Technologie und Natur zu betonen.
