@@ -1,4 +1,5 @@
-lowchart TD
+```mermaid
+flowchart TD
     %% Hauptdatenfluss
     RawData[Rohdaten] --> |Erfassung| DataConnectors[Datenkonnektoren]
     DataConnectors --> |Vorverarbeitung| ProcessedData[Vorverarbeitete Daten]
@@ -62,3 +63,4 @@ lowchart TD
     class DataConnectors,AIAnalysis,PrivacyLayer,ValueEstimation,OceanIntegration process
     class Marketplace result
     class DataTypes,AnalysisResults,PrivacyMechanisms,ValueFactors subgraph
+```
