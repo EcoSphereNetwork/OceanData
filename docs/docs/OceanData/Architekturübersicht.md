@@ -1,3 +1,4 @@
+```mermaid
 graph TB
     %% Hauptmodule
     User[Benutzer] --> Frontend
@@ -93,3 +94,4 @@ graph TB
     
     class User,OceanMarket,Blockchain external
     class Frontend,Backend,DataSources,AIModules,PrivacyModules,MonetizationModules,ReactComponents module
+```
