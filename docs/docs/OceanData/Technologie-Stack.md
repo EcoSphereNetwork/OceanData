@@ -1,3 +1,4 @@
+```mermaid
 graph TB
     %% Hauptebenen
     subgraph Präsentationsschicht
@@ -93,3 +94,4 @@ graph TB
     class MongoDB,PostgreSQL,S3 data
     class Cryptography,Fernet,DiffPrivLib privacy
     class OceanJS,Solidity,Web3,Ethereum blockchain
+```
