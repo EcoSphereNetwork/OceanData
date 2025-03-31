@@ -64,4 +64,58 @@
   - Technische Ressourcen: 10.000 €
 
 ## Phase 4: Frontend und Blockchain (12 Wochen)
-**Budget
+**Budget: 153.600 €**
+
+### Meilenstein 4.1: Frontend-Entwicklung (6 Wochen)
+- Marktplatz-UI-Entwicklung
+- Datenkonsumenten-Dashboard
+- Datenanbieter-Interface
+- **Kosten: 76.300 €**
+  - Personalkosten: 72.000 € (1 Projektmanager, 2 Frontend-Entwickler, 1 UX/UI-Designer, 1 QA-Tester)
+  - Technische Ressourcen: 4.300 €
+
+### Meilenstein 4.2: Blockchain-Integration (6 Wochen)
+- Ocean Protocol Smart Contracts
+- Token-basiertes Handelssystem
+- Compute-to-Data-Funktionalität
+- **Kosten: 77.300 €**
+  - Personalkosten: 72.000 € (1 Projektmanager, 1 Blockchain-Entwickler, 1 Smart Contract-Entwickler, 1 Backend-Entwickler)
+  - Technische Ressourcen: 5.300 €
+
+## Phase 5: System-Integration und Tests (8 Wochen)
+**Budget: 127.000 €**
+
+### Meilenstein 5.1: Systemintegration (4 Wochen)
+- Integration aller Komponenten
+- End-to-End-Workflows
+- Performance-Optimierung
+- **Kosten: 63.500 €**
+  - Personalkosten: 60.000 € (1 Projektmanager, 2 Backend-Entwickler, 1 Frontend-Entwickler, 1 Datenintegrationsspezialist, 1 DevOps-Ingenieur)
+  - Technische Ressourcen: 3.500 €
+
+### Meilenstein 5.2: Umfassende Tests (4 Wochen)
+- Systemtests
+- Performance- und Skalierungstests
+- Sicherheitsaudits
+- **Kosten: 63.500 €**
+  - Personalkosten: 60.000 € (1 Projektmanager, 1 Backend-Entwickler, 1 QA-Tester, 1 Sicherheitsexperte, 1 DevOps-Ingenieur)
+  - Technische Ressourcen: 3.500 €
+
+## Phase 6: Pilotphase und Produktionsrelease (8 Wochen)
+**Budget: 109.125 €**
+
+### Meilenstein 6.1: Pilotphase (4 Wochen)
+- Kontrollierte Pilotphase mit ausgewählten Nutzern
+- Feedback-Sammlung und -Analyse
+- Feinabstimmung basierend auf Erkenntnissen
+- **Kosten: 54.625 €**
+  - Personalkosten: 52.000 € (1 Projektmanager, 1 Backend-Entwickler, 1 Frontend-Entwickler, 1 Datenwissenschaftler, 1 QA-Tester)
+  - Technische Ressourcen: 2.625 €
+
+### Meilenstein 6.2: Produktionsrelease (4 Wochen)
+- Finales Deployment
+- Dokumentation und Schulungsmaterialien
+- Go-Live und initiale Support-Phase
+- **Kosten: 54.500 €**
+  - Personalkosten: 52.000 € (1 Projektmanager, 1 Backend-Entwickler, 1 Frontend-Entwickler, 1 DevOps-Ingenieur, 1 Technischer Autor)
+  - Technische Ressourcen: 2.500 €
