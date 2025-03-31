@@ -1,57 +1,63 @@
-**MVP-Budgetübersicht für OceanData** – deine Plattform für dezentrale, datenschutzfreundliche Datenökonomie:
-
-| **Modul**                 | **Personalressourcen** | **Technische Ressourcen** | **Reserve (15 %)** | **Gesamtbudget (MVP)** |
-|---------------------------|------------------------|----------------------------|--------------------|-------------------------|
-| OceanData (Data Economy) | 608.500 €              | 119.000 €                  | 109.125 €          | **836.625 €**           |
+**detaillierter 3-Jahres-Finanzplan für OceanData**, die datenschutzfreundliche, dezentralisierte Plattform zur Monetarisierung und Analyse sensibler Daten.
 
 ---
 
-## ✨ **Pitch-Deck-Zusammenfassung – OceanData**
+## 📊 **Kerndaten des Finanzplans**
 
-### 💡 Produktidee
-**OceanData** revolutioniert die Datenökonomie: Nutzer*innen monetarisieren ihre Daten fair und sicher – durch Blockchain, Compute-to-Data & KI.
-
-### 💸 MVP-Investitionsbedarf
-- **Gesamtbudget:** **836.625 €**
-- **Zeitraum:** 12–14 Monate
-- Finanzierungsmix: VC, Fördermittel, Community-Funding
-
-### 📈 Finanzkennzahlen (Prognose)
-
-| Einnahmequelle              | Mechanik                              | Umsatzpotenzial (€/Jahr) |
-|-----------------------------|----------------------------------------|--------------------------|
-| Transaktionsgebühren        | 2–5 % auf Daten-/Compute-Käufe        | 331.200 €                |
-| Compute-to-Data Nutzung     | Pay-per-compute                       | 552.000 €                |
-| Premium-Zugang (B2B)        | API, Dashboards, SLA                  | 441.600 €                |
-| Staking / Yield Sharing     | Belohnung für gestakte Daten          | 331.200 €                |
-| Partnerdaten-Zugänge        | Smart Cities, Health, Finance etc.    | 552.000 €                |
-| **Gesamtumsatz (Jahr 1)**   |                                        | **2.208.000 €**          |
-
-### 🧮 Break-even: innerhalb von 18 Monaten möglich  
-### 🪙 Monetarisierung: Tokenisiert, interoperabel, DSGVO-konform  
-### 🔍 Zielgruppen: Unternehmen, Städte, Forschung, KI-Entwickler
+| Jahr        | Nutzer:innen (geschätzt) | Umsatz         | Gewinn/Verlust     | Kumul. Cashflow    |
+|-------------|---------------------------|----------------|---------------------|---------------------|
+| 2025 (MVP)  | 5.000                     | 300.000 €      | –551.625 €          | –836.625 €          |
+| 2026        | 20.000                    | 1.500.000 €    | +1.090.000 €        | +253.375 €          |
+| 2027        | 60.000                    | 4.000.000 €    | +3.320.000 €        | **+3.573.375 €**    |
 
 ---
 
-## 📄 **Businessplan-Zusammenfassung – OceanData**
+## 📈 **Weitere Finanzmetriken**
 
-### Ziel und Funktion
-OceanData ist eine **dezentrale Infrastruktur für die sichere, faire Nutzung und Analyse sensibler Nutzerdaten** – unter voller Kontrolle der Dateneigentümer.
+### 💰 **Return on Investment (ROI)**
+- Investition (MVP): 836.625 €
+- ROI über 3 Jahre: **~427 %**
 
-### Key Features
-- **Data Monetization Tools** für private Nutzer
-- **Compute-to-Data-Funktionalität** für Unternehmen
-- **Ocean Protocol Integration** & Smart Contracts
-- **KI-basierte Auswertung & Echtzeitanalyse**
+### 📈 **Break-even:**
+- **Im 2. Jahr (2026)** bei moderatem Nutzerwachstum
 
-### MVP-Ziele
-- **Modularer Aufbau**
-- **Produktionsreife Compute-to-Data Engine**
-- **Smart Contracts + Tokenmechanismen**
-- **Datenspeicher, Analyse und Frontend vollständig integriert**
+### 📊 **Deckungsbeitrag pro Nutzer (2027)**
+- Umsatz pro Nutzer: **66,67 € / Jahr**
+- Variable Kosten: **3 € / Nutzer**
+- Deckungsbeitrag: **~63 € / Nutzer** → sehr hohe Marge (insbesondere im B2B-/Compute-Bereich)
 
-### Finanzierung
-- **Budget:** 836.625 €
-- **Verwendung:** Entwicklung, Integration, Datenschutz, Marktstart
-- **Kapitalquellen:** VC, Förderprogramme (z. B. Gaia-X, EU-Förderung), Tokenbasierte Community-Finanzierung
+---
+
+## 🔍 **Zusätzliche Finanzaspekte für den Businessplan**
+
+### ✅ **Stärken**
+- Sehr starke Marge durch Compute-to-Data, APIs & Token
+- Kombination aus Transaktions- & Subskriptionsmodellen
+- Geringe Nutzerbasis nötig, da B2B & Datenorientiert
+- Potenzial für DAO/Tokenisierung
+
+### ⚠️ **Risiken**
+- Abhängigkeit von regulatorischer Klarheit bei Datenhandel
+- Compute-Kosten können skalieren bei KI-Nutzung
+- Technologische Komplexität bei Multi-Source Data Integration
+
+---
+
+## 🧾 **Empfohlene Gliederung im Finanzplan**
+
+1. **Kostenstruktur**
+   - Initiale MVP-Kosten: 836.625 €
+   - Fixkosten sinken im Vergleich zur Monetarisierung
+   - Variable Kosten bleiben niedrig (< 3 €/User/Jahr)
+
+2. **Einnahmeströme**
+   - Transaktionen (Fees 2–5 %)
+   - Compute-to-Data Zugänge
+   - APIs & Premium Dashboards
+   - Partnerdaten / Enterprise-Verträge
+   - Datenfreigabe mit OceanData-Schnittstelle
+
+3. **Szenarienrechnung (optional)**
+   - konservativ: 20.000 Nutzer 2026 → Break-even erreicht
+   - dynamisch: 60.000 Nutzer 2027 → 3,57 Mio. € Überschuss
 
