@@ -1,3 +1,8 @@
+# Whitepaper – OceanData
+
+**Datum:** 02.04.2025  
+**Autor:** EcoSphereNetwork
+
 # OceanData – Die datenschutzfreundliche Plattform zur dezentralen Monetarisierung von Nutzerdaten
 
 ## Abstract
