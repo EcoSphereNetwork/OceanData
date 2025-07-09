@@ -1,1 +1,1 @@
-__all__ = ['cli', 'main']
+__all__ = ["cli", "main"]
