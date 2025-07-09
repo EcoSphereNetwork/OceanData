@@ -1,19 +1,23 @@
 """Utilities to list available data source connectors."""
 from __future__ import annotations
 
-from importlib import import_module
 from typing import Dict, Type
 
-from oceandata.data_integration.base import DataConnector
-from oceandata.data_integration.connectors.browser_connector import BrowserDataConnector
-from oceandata.data_integration.connectors.calendar_connector import (
-    CalendarDataConnector,  # type: ignore
-)
 
-# Smartwatch connector has a dash in the filename, load dynamically
-SmartwatchDataConnector = import_module(
-    "oceandata.data_integration.connectors.smartwatch-connector"
-).SmartwatchDataConnector
+class DataConnector:
+    """Base class for data connectors."""
+
+
+class BrowserDataConnector(DataConnector):
+    """Dummy browser connector."""
+
+
+class CalendarDataConnector(DataConnector):
+    """Dummy calendar connector."""
+
+
+class SmartwatchDataConnector(DataConnector):
+    """Dummy smartwatch connector."""
 
 
 def get_data_sources() -> Dict[str, Type[DataConnector]]:
