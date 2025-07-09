@@ -4,33 +4,26 @@ from __future__ import annotations
 
 from typer.testing import CliRunner
 from pathlib import Path
-import importlib.util
 import sys
 import ast
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-main_path = ROOT / "src" / "main.py"
-spec = importlib.util.spec_from_file_location("cli_main", main_path)
-main = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(main)
-app = main.app
+from src.main import app
 
 
 def test_hello_command() -> None:
     runner = CliRunner()
     result = runner.invoke(app, ["hello"])
     assert result.exit_code == 0
-    assert "Hello" in result.output
+    assert "Hello, World!" in result.output
 
 
 def test_add_command() -> None:
     runner = CliRunner()
     result = runner.invoke(app, ["add", "2", "3"])
     assert result.exit_code == 0
-    assert "= 5" in result.output
+    assert "2 + 3 = 5" in result.output
 
 
 def test_sync_command() -> None:
