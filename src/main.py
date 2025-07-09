@@ -1,43 +1,78 @@
-"""Command line interface for OceanData template."""
-
+"""Command line interface for the OceanData SDK."""
 from __future__ import annotations
 
-import click
+import pandas as pd
+import typer
 from dotenv import load_dotenv
 
+from ocean_sdk import (
+    publish_dataset,
+    run_analysis,
+    sync_marketplace,
+    train_model,
+)
 from src.modules.calculator import add
 
 load_dotenv()
 
-@click.group()
-@click.option("--debug", is_flag=True, help="Enable debug mode")
-@click.pass_context
-def cli(ctx: click.Context, debug: bool) -> None:
+app = typer.Typer(add_completion=False)
+
+
+@app.callback()
+def main(ctx: typer.Context, debug: bool = typer.Option(False, '--debug', help='Enable debug mode')) -> None:
     """OceanData CLI entry point."""
-    ctx.ensure_object(dict)
-    ctx.obj["DEBUG"] = debug
+    ctx.obj = {"DEBUG": debug}
     if debug:
-        click.echo("Debug mode activated")
+        typer.echo("Debug mode activated")
 
-@cli.command()
-@click.option("--name", default="World", help="Name to greet")
-def hello(name: str) -> None:
+
+@app.command()
+def hello(name: str = "World") -> None:
     """Simple greeting."""
-    click.echo(f"Hello, {name}!")
+    typer.echo(f"Hello, {name}!")
 
-@cli.command()
-@click.argument("x", type=float)
-@click.argument("y", type=float)
+
+@app.command()
 def add_cmd(x: float, y: float) -> None:
     """Add two numbers and output the result."""
     result = add(x, y)
-    click.echo(f"{x} + {y} = {result}")
+    typer.echo(f"{x} + {y} = {result}")
+
+
+@app.command()
+def analyze(source_type: str) -> None:
+    """Run analysis for the given data source using dummy data."""
+    data = pd.DataFrame()
+    result = run_analysis(data, source_type)
+    typer.echo(result)
+
+
+@app.command()
+def publish(name: str, price: float) -> None:
+    """Publish a dataset via the blockchain helper."""
+    result = publish_dataset(name, {"title": name}, price)
+    typer.echo(result)
+
+
+@app.command()
+def train(data_id: str) -> None:
+    """Trigger Compute-to-Data training for a dataset."""
+    result = train_model(data_id)
+    typer.echo(result)
+
+
+@app.command()
+def sync() -> None:
+    """Synchronize with the marketplace backend."""
+    result = sync_marketplace()
+    typer.echo(result)
 
 
 def main() -> None:
-    """Run the CLI."""
-    cli(obj={})
+    """Entry point for poetry script."""
+    app()
 
 
 if __name__ == "__main__":
     main()
+

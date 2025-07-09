@@ -7,9 +7,13 @@ export interface PublishOptions {
   config?: Record<string, any>;
 }
 
-/** Placeholder publish function. In a real implementation this would
- * interact with the Ocean Protocol contracts via a web3 library. */
-export function publishDataset(name: string, options: PublishOptions): Record<string, any> {
+/**
+ * Publish a dataset to the OceanData marketplace.
+ *
+ * @remarks
+ * This placeholder simply returns the provided metadata.
+ */
+export async function publishDataset(name: string, options: PublishOptions): Promise<Record<string, any>> {
   return {
     success: true,
     name,
@@ -19,7 +23,26 @@ export function publishDataset(name: string, options: PublishOptions): Record<st
   };
 }
 
-/** Run analysis client-side. In practice this would call a backend API. */
-export function runAnalysis(data: unknown, sourceType: string): Record<string, unknown> {
+/**
+ * Execute an analysis job.
+ *
+ * @param data - Input data
+ * @param sourceType - Identifier of the data source
+ */
+export async function runAnalysis(data: unknown, sourceType: string): Promise<Record<string, unknown>> {
   return { sourceType, recordCount: Array.isArray(data) ? data.length : 0 };
+}
+
+/**
+ * Retrieve results for a previously submitted job.
+ */
+export async function fetchResults(jobId: string): Promise<Record<string, any>> {
+  return { jobId, status: 'done', result: null };
+}
+
+/**
+ * Get current marketplace listings.
+ */
+export async function getMarketplaceListings(): Promise<Array<Record<string, any>>> {
+  return [];
 }

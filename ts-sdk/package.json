@@ -6,6 +6,9 @@
   "scripts": {
     "build": "tsc"
   },
+  "bin": {
+    "oceandata": "bin.ts"
+  },
   "devDependencies": {
     "typescript": "^5.4.2"
   }

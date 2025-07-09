@@ -105,6 +105,12 @@ npm run test:unit        # Unit tests
 npm run test:integration # Integration tests
 ```
 
+### CLI Usage
+```bash
+poetry run app hello
+poetry run app sync
+```
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md)
