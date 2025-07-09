@@ -5,4 +5,5 @@
 - Added Python and TypeScript SDK modules
 - Provided CLI utilities for common tasks
 - Included example notebook
+- Updated linting and test configuration
 

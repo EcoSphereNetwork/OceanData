@@ -1,4 +1,5 @@
 """Command line interface for the OceanData SDK."""
+
 from __future__ import annotations
 
 import pandas as pd
@@ -19,7 +20,10 @@ app = typer.Typer(add_completion=False)
 
 
 @app.callback()
-def main(ctx: typer.Context, debug: bool = typer.Option(False, '--debug', help='Enable debug mode')) -> None:
+def main(
+    ctx: typer.Context,
+    debug: bool = typer.Option(False, "--debug", help="Enable debug mode"),
+) -> None:
     """OceanData CLI entry point."""
     ctx.obj = {"DEBUG": debug}
     if debug:
@@ -32,11 +36,15 @@ def hello(name: str = "World") -> None:
     typer.echo(f"Hello, {name}!")
 
 
-@app.command()
+@app.command(name="add")
 def add_cmd(x: float, y: float) -> None:
     """Add two numbers and output the result."""
     result = add(x, y)
-    typer.echo(f"{x} + {y} = {result}")
+    if result.is_integer():
+        result = int(result)
+    a = int(x) if float(x).is_integer() else x
+    b = int(y) if float(y).is_integer() else y
+    typer.echo(f"{a} + {b} = {result}")
 
 
 @app.command()
@@ -68,11 +76,10 @@ def sync() -> None:
     typer.echo(result)
 
 
-def main() -> None:
+def cli_main() -> None:
     """Entry point for poetry script."""
     app()
 
 
 if __name__ == "__main__":
-    main()
-
+    cli_main()
