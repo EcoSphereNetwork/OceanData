@@ -195,7 +195,9 @@ https://github.com/oceanprotocol/ocean.py
 
 DataUnion Foundation
 
-Streamr Docs
+
+Streamr Github
+https://github.com/streamr-dev
 
 Datalatte GitHub
 
