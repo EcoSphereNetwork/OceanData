@@ -187,6 +187,11 @@ Ocean Protocol Docs
 https://docs.oceanprotocol.com
 
 Ocean.py auf GitHub
+https://github.com/oceanprotocol
+https://github.com/oceanprotocol/pdr-backend
+https://github.com/oceanprotocol/ocean.js
+https://github.com/oceanprotocol/docs
+https://github.com/oceanprotocol/ocean.py
 
 DataUnion Foundation
 
