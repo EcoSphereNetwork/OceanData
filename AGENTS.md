@@ -184,6 +184,7 @@ Dateien unter docs/
 Links und Guides zu allen SDKs und externen Repos:
 
 Ocean Protocol Docs 
+https://docs.oceanprotocol.com
 
 Ocean.py auf GitHub
 
