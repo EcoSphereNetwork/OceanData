@@ -194,6 +194,10 @@ https://github.com/oceanprotocol/docs
 https://github.com/oceanprotocol/ocean.py
 
 DataUnion Foundation
+https://github.com/DataUnion-app
+https://github.com/DataUnion-app/du-ocean-contracts
+https://github.com/DataUnion-app/market
+https://github.com/DataUnion-app/Squid
 
 
 Streamr Github
