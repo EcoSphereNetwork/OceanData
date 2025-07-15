@@ -85,7 +85,8 @@ oceandata/
 │   ├── data-integration/   # Data source connectors
 │   ├── blockchain/         # Ocean Protocol integration
 │   ├── analytics/          # AI and ML models
-│   └── marketplace/        # Frontend for data trading
+│   ├── marketplace/        # Frontend for data trading
+│   └── interop/            # Integrations for Ocean, DataUnion, Streamr, Datalatte
 ├── tests/                  # Test suite
 ├── docs/                   # Documentation
 └── scripts/                # Utility scripts
